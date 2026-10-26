@@ -76,7 +76,7 @@ function sum(k){const f=v=>typeof v==="number"?v.toLocaleString("id-ID",{maximum
   return `<div><span>${m.slice(0,3)}</span><b>${v}</b></div>`}).join("")}
 function tot(k){let S=0,C=0,na=0;B.forEach((m,i)=>{const e=E[key(k,i)];if(e){S+=+e.s||0;C+=+e.c||0;if(e.s==="-"||e.c==="-")na=1}});
  const f=n=>n.toLocaleString("id-ID",{maximumFractionDigits:2}),tg=T[k],p=S>0?C/S*100:null,w=p===null?0:Math.min(p,100);
- return `<div class="bar" title="Total capaian dibagi total sasaran semua bulan; garis hitam = target"><u style="width:${w}%"></u>${tg!==undefined&&tg<=100?`<s style="left:${tg}%"></s>`:""}</div><p><b>Total ${p===null?"–":p.toFixed(1).replace(".",",")+"%"}</b> <span>${S||C?f(C)+" dari "+f(S):na?"Tidak ada":"belum diisi"}${tg!==undefined?" · target "+f(tg):""}</span></p>`}
+ return `<div class="bar" title="Total capaian dibagi total sasaran semua bulan; garis hitam = target"><u style="width:${w}%"></u>${tg!==undefined&&tg<=100?`<s style="left:${tg}%"></s>`:""}</div><p><b>${esc(U[k]||"")}</b></p>`}
 function mon(k,b){return B.map((m,i)=>{const e=E[key(k,i)]||{},a=has(e.s),c=has(e.c);
  return `<button type="button" data-m="${i}" title="${m}" aria-pressed="${i==b}" class="mb ${a&&c?"ok":a||c?"half":""}">${m.slice(0,3)}</button>`}).join("")}
 function lkRow(k){const t=openL[k];return t===undefined?"":`<div class="lk"><label>Link bukti TW${t+1} (boleh dikosongkan)<input data-lk="${t}" type="text" inputmode="url" autocomplete="off" placeholder="https://" value="${esc(L[k+"|"+t]||"")}"></label></div>`}
